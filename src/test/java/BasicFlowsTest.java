@@ -1,6 +1,5 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import po.HomePage;
 
 public class BasicFlowsTest extends BaseTest{
 
