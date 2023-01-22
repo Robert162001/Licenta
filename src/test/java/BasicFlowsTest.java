@@ -1,7 +1,7 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class BasicFlowsTest extends BaseTest{
+public class BasicFlowsTest extends WebDriverManager {
 
     @Test
     public void navigateTest(){
