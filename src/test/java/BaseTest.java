@@ -17,14 +17,14 @@ public class BaseTest {
     @BeforeMethod
     public void init() {
         WebDriverManager.chromedriver().setup();
-        WebDriverManager.edgedriver().setup();
+       // WebDriverManager.edgedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
-        EdgeOptions edgeOptions = new EdgeOptions();
+       // EdgeOptions edgeOptions = new EdgeOptions();
         chromeOptions.addArguments("--window-size=1920,1080");
-        edgeOptions.addArguments("--window-size=1920,1080");
-        // chromeOptions.addArguments("headless");
+      // edgeOptions.addArguments("--window-size=1920,1080");
+       // chromeOptions.addArguments("headless");
         webDriver = new ChromeDriver(chromeOptions);
-        webDriver = new EdgeDriver(edgeOptions);
+       // webDriver = new EdgeDriver(edgeOptions);
         homePage = new HomePage(webDriver);
         homePage.navigateTo();
     }
