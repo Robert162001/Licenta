@@ -3,7 +3,7 @@
 <suite name="Parallel Test Suite" parallel="methods" thread-count="2">
     <test name="Parallel Test" >
         <classes>
-            <class name="BasicFlowsTest"/>
+            <class name="tests.BasicFlowsTest"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
