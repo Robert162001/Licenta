@@ -2,14 +2,21 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import testutils.BaseTestProvider;
 import webpages.HomePage;
 
-public class BasicFlowsTest extends WebDriverManager {
+public class BasicFlowsTest extends BaseTestProvider {
 
     @Test
-    public void navigateTest(){
-        HomePage homePage = new HomePage(getWebDriver());
+    public void navigateTest1() {
+        HomePage homePage = new HomePage(webDriver);
         homePage.navigateTo();
-        Assert.assertTrue(getWebDriver().getCurrentUrl().contains("robert-b.ro/"));
+        Assert.assertTrue(webDriver.getCurrentUrl().contains("robert-b.ro/"));
+    }
+
+    @Test
+    public void navigateTest2() {
+        webDriver.navigate().to("http://robert-b.ro/contact/");
+        Assert.assertTrue(webDriver.getCurrentUrl().contains("robert-b.ro/"));
     }
 }
