@@ -18,24 +18,17 @@ public class WebDriverHandler {
     }
 
     public WebDriverHandler(String... capabilities) {
-        instantiateChrome(capabilities);
-    }
-
-    public WebDriverHandler(String browser, String... capabilities) {
-
+        String browser = System.getProperty("browser", "chrome");
         switch (browser) {
-            case Browsers.EDGE -> {
-                instantiateEdge();
-            }
-            case Browsers.FIREFOX -> {
-                instantiateFirefox(capabilities);
-            }
+            case Browsers.EDGE -> instantiateEdge();
 
-            case Browsers.CHROME -> {
+            case Browsers.FIREFOX -> instantiateFirefox(capabilities);
+
+            case Browsers.CHROME -> instantiateChrome(capabilities);
+
+            default -> {
                 instantiateChrome(capabilities);
             }
-
-            default -> instantiateChrome(capabilities);
         }
     }
 

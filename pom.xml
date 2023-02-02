@@ -8,8 +8,8 @@
     <artifactId>licenta</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
     <build>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -24,10 +24,6 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-
-                    <suiteXmlFiles>
-                        <suiteXmlFile>testng_jenkins.xml</suiteXmlFile>
-                    </suiteXmlFiles>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -38,6 +34,7 @@
                 </dependencies>
             </plugin>
         </plugins>
+
     </build>
 
     <dependencies>
