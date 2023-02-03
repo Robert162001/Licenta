@@ -1,24 +1,43 @@
 package step_definitions;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import webpages.HomePage;
+import org.testng.Assert;
+import testutils.BaseTestProvider;
+import webpages.Pages;
 
 public class StepCucumber {
-    private HomePage homePage;
+
+    private BaseTestProvider baseTestProvider;
+    private Pages pages;
+
+    @Before
+    public void setup() {
+        baseTestProvider = new BaseTestProvider();
+        baseTestProvider.setupDriver();
+        pages = new Pages(baseTestProvider.getWebDriver());
+    }
+
+    @After
+    public void teardown() {
+        baseTestProvider.closeDriver();
+    }
 
     @Given("A user is on Home page")
     public void navigateToHomePage() {
-        homePage.navigateTo();
+        pages.homePage().navigateTo();
     }
 
     @When("They navigate to Contact page")
     public void navigateToContactPage() {
-
+        pages.homePage().clickOnContact();
     }
 
     @Then("They should be able to chat with customer support")
     public void verifyChatIsEnabled() {
+        Assert.assertTrue(pages.contactPage().isOnContactPage());
     }
 }
