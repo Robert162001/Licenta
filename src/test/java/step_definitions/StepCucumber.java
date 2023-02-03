@@ -40,4 +40,15 @@ public class StepCucumber {
     public void verifyChatIsEnabled() {
         Assert.assertTrue(pages.contactPage().isOnContactPage());
     }
+
+
+    @When("They navigate to About page")
+    public void navigateToAboutPage() {
+        pages.homePage().clickOnAbout();
+    }
+
+    @Then("They should see information about site")
+    public void verifySiteInformation() {
+        Assert.assertTrue(pages.aboutPage().isOnAboutPage());
+    }
 }

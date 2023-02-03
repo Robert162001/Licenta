@@ -12,6 +12,7 @@ public class Home {
     private final WebDriver webDriver;
 
     private final By contactLink = By.xpath("//a[contains(@href, 'contact')]");
+    private final By aboutLink = By.xpath("//a[contains(@href, 'about')]");
 
     private static final String HOME_PAGE_URL = "http://www.robert-b.ro/";
 
@@ -26,5 +27,9 @@ public class Home {
 
     public void clickOnContact() {
         using(webDriver, () -> $(contactLink).click());
+    }
+
+    public void clickOnAbout() {
+        using(webDriver, () -> $(aboutLink).click());
     }
 }

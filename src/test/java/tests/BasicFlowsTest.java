@@ -6,7 +6,6 @@ import webpages.Home;
 
 public class BasicFlowsTest extends BaseTestProvider {
 
-
     public void navigateTest1() {
         Home home = new Home(webDriver);
         home.navigateTo();

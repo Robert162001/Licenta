@@ -6,6 +6,7 @@ public class Pages {
     private WebDriver webDriver;
     private Home home;
     private Contact contact;
+    private About about;
 
     public Pages(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -18,5 +19,7 @@ public class Pages {
     public Contact contactPage() {
         return contact == null ? new Contact(webDriver) : this.contact;
     }
+
+    public About aboutPage() {return about == null ? new About(webDriver) : this.about;}
 
 }
