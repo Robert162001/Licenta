@@ -7,7 +7,6 @@ Feature: Basic Flow
     Then They should be able to chat with customer support
 
 
-
   Scenario: Navigation to About page
 
     Given A user is on Home page

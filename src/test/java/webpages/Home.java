@@ -29,7 +29,5 @@ public class Home {
         using(webDriver, () -> $(contactLink).click());
     }
 
-    public void clickOnAbout() {
-        using(webDriver, () -> $(aboutLink).click());
-    }
+    public void clickOnAbout() {using(webDriver, () -> $(aboutLink).click());}
 }
