@@ -2,9 +2,12 @@ package step_definitions;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import testutils.BaseTestProvider;
 import webpages.Pages;
@@ -22,7 +25,17 @@ public class StepCucumber {
     }
 
     @After
-    public void teardown() {
+    public void teardown(Scenario scenario) {
+        try {
+            String screenshotName = scenario.getName().replaceAll("", "_");
+            if (scenario.isFailed()) {
+                TakesScreenshot takesScreenshot = (TakesScreenshot) baseTestProvider.getWebDriver();
+                byte[] screenshot = takesScreenshot.getScreenshotAs(OutputType.BYTES);
+                scenario.attach(screenshot, "img/png", screenshotName);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         baseTestProvider.closeDriver();
     }
 
@@ -50,5 +63,10 @@ public class StepCucumber {
     @Then("They should see information about site")
     public void verifySiteInformation() {
         Assert.assertTrue(pages.aboutPage().isOnAboutPage());
+    }
+
+    @When("They press on search button")
+    public void theyPressOnSearchButton() {
+
     }
 }
