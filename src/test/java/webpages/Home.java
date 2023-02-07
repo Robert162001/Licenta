@@ -3,6 +3,7 @@ package webpages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import utils.PropertiesReader;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.using;
@@ -14,7 +15,7 @@ public class Home {
     private final By contactLink = By.xpath("//a[contains(@href, 'contact')]");
     private final By aboutLink = By.xpath("//a[contains(@href, 'about')]");
 
-    private static final String HOME_PAGE_URL = "http://www.robert-b.ro/";
+    public static final String HOME_PAGE_URL = PropertiesReader.getProperty(PropertiesReader.TestProperty.BASE_URL);
 
     public Home(WebDriver webDriver) {
         this.webDriver = webDriver;

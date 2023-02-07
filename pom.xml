@@ -90,7 +90,6 @@
     </dependencies>
 
     <properties>
-        <db.properties>src/test/resources/base.properties</db.properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.9.9.1</aspectj.version>
 
