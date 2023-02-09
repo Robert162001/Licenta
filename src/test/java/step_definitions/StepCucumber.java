@@ -8,11 +8,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import testutils.BaseTestProvider;
 import webpages.Pages;
 
 public class StepCucumber {
+    private static final Logger logger = LogManager.getLogger(StepCucumber.class);
 
     private BaseTestProvider baseTestProvider;
     private Pages pages;
@@ -46,6 +49,7 @@ public class StepCucumber {
 
     @When("They navigate to Contact page")
     public void navigateToContactPage() {
+        logger.info("Click on Contact");
         pages.homePage().clickOnContact();
     }
 
@@ -57,6 +61,7 @@ public class StepCucumber {
 
     @When("They navigate to About page")
     public void navigateToAboutPage() {
+        logger.info("Click on About");
         pages.homePage().clickOnAbout();
     }
 
