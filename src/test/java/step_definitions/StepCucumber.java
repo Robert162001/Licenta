@@ -26,6 +26,7 @@ public class StepCucumber {
         baseTestProvider.closeDriver();
     }
 
+
     @Given("A user is on Home page")
     public void navigateToHomePage() {
         pages.homePage().navigateTo();
