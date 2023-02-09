@@ -9,7 +9,7 @@ public class Contact {
 
     private final WebDriver webDriver;
 
-    private static final String CONTACT_PAGE_URL = HOME_PAGE_URL + "/contact/";
+    private static final String CONTACT_PAGE_URL = HOME_PAGE_URL + "contact/";
 
     public Contact(WebDriver webDriver) {
         this.webDriver = webDriver;

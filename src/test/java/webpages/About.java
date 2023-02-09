@@ -9,7 +9,7 @@ public class About {
 
     private final WebDriver webDriver;
 
-    private static final String ABOUT_PAGE_URL = HOME_PAGE_URL + "/about/";
+    private static final String ABOUT_PAGE_URL = HOME_PAGE_URL + "about/";
 
     public About(WebDriver webDriver) {
         this.webDriver = webDriver;
