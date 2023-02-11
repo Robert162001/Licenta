@@ -70,8 +70,9 @@ public class StepCucumber {
         Assert.assertTrue(pages.aboutPage().isOnAboutPage());
     }
 
-    @When("They press on search button")
-    public void theyPressOnSearchButton() {
 
+    @Then("They should be on the Home Page")
+    public void theyShouldBeOnTheHomePage() {
+        Assert.assertTrue(pages.contactPage().isOnContactPage());
     }
 }

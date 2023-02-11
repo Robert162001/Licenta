@@ -35,6 +35,9 @@ public class WebDriverHandler {
     private void instantiateChrome(String... capabilities) {
         chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
+        //TODO: to remove this before merge
+        //chromeOptions.addArguments("start-maximized");
+        //chromeOptions.addArguments("--headless");
         chromeOptions.addArguments(capabilities);
         webDriver = new ChromeDriver(chromeOptions);
     }
