@@ -12,3 +12,9 @@ Feature: Basic Flow
     Given A user is on Home page
     When They navigate to About page
     Then They should see information about site
+
+
+  Scenario: Failure Test
+
+    Given A user is on Home page
+    Then They should be on the Home Page
