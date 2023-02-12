@@ -11,10 +11,10 @@ Feature: Basic Flow
 
     Given A user is on Home page
     When They navigate to About page
-#    Then They should see information about site
+    Then They should see information about site
 
 
-  Scenario: Search button
+  Scenario: Failure Test
 
     Given A user is on Home page
     Then They should be on the Home Page
