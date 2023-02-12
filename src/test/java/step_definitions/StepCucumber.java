@@ -6,13 +6,16 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import io.qameta.allure.Allure;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import testutils.BaseTestProvider;
 import webpages.Pages;
+
+import java.io.ByteArrayInputStream;
 
 public class StepCucumber {
     private static final Logger logger = LogManager.getLogger(StepCucumber.class);
@@ -28,16 +31,9 @@ public class StepCucumber {
     }
 
     @After
-    public void teardown(Scenario scenario) {
-        try {
-            String screenshotName = scenario.getName().replaceAll("", "_");
-            if (scenario.isFailed()) {
-                TakesScreenshot takesScreenshot = (TakesScreenshot) baseTestProvider.getWebDriver();
-                byte[] screenshot = takesScreenshot.getScreenshotAs(OutputType.BYTES);
-                scenario.attach(screenshot, "img/png", screenshotName);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    public void teardown(Scenario scenario) throws IllegalMonitorStateException {
+        if (scenario.isFailed()) {
+            Allure.addAttachment(scenario.getName(), new ByteArrayInputStream(((TakesScreenshot) baseTestProvider.getWebDriver()).getScreenshotAs(OutputType.BYTES)));
         }
         baseTestProvider.closeDriver();
     }
