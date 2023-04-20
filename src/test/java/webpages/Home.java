@@ -12,8 +12,11 @@ public class Home {
 
     private final WebDriver webDriver;
 
-    private final By contactLink = By.xpath("//a[contains(@href, 'contact')]");
-    private final By aboutLink = By.xpath("//a[contains(@href, 'about')]");
+    private final By blogLink = By.xpath("//a[contains(@href, 'blog')]");
+    private final By tripsLink = By.xpath("//a[contains(@href, 'trip')]");
+    private final By destinationsLink = By.xpath("//a[contains(@href, 'destinations')]");
+    private final By activitiesLink = By.xpath("//a[contains(@href, 'activities')]");
+    private final By tripTypesLink = By.xpath("//a[contains(@href, 'trip-types')]");
 
     public static final String HOME_PAGE_URL = PropertiesReader.getProperty(PropertiesReader.TestProperty.BASE_URL);
 
@@ -26,11 +29,15 @@ public class Home {
         webDriver.navigate().to(HOME_PAGE_URL);
     }
 
-    public void clickOnContact() {
-        using(webDriver, () -> $(contactLink).click());
+    public void clickOnBlog() {
+        using(webDriver, () -> $(blogLink).click());
     }
 
-    public void clickOnAbout() {
-        using(webDriver, () -> $(aboutLink).click());
-    }
+    public void clickOnTrips() {using(webDriver, () -> $(tripsLink).click());}
+
+    public void clickOnDestinations() {using(webDriver, () -> $(destinationsLink).click());}
+
+    public void clickOnActivities() {using(webDriver, () -> $(activitiesLink).click());}
+
+    public void clickOnTripTypes() {using(webDriver, () -> $(tripTypesLink).click());}
 }

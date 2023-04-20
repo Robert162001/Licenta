@@ -1,16 +1,16 @@
 Feature: Basic Flow
 
-  Scenario: Navigation to Contact page
+  Scenario: Navigation to Blog page
 
     Given A user is on Home page
-    When They navigate to Contact page
+    When They navigate to Blog page
     Then They should be able to chat with customer support
 
 
-  Scenario: Navigation to About page
+  Scenario: Navigation to Trips page
 
     Given A user is on Home page
-    When They navigate to About page
+    When They navigate to Trips page
     Then They should see information about site
 
 

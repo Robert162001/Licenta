@@ -43,32 +43,32 @@ public class StepCucumber {
         pages.homePage().navigateTo();
     }
 
-    @When("They navigate to Contact page")
-    public void navigateToContactPage() {
-        logger.info("Click on Contact");
-        pages.homePage().clickOnContact();
+    @When("They navigate to Blog page")
+    public void navigateToBlogPage() {
+        logger.info("Click on Blog");
+        pages.homePage().clickOnBlog();
     }
 
     @Then("They should be able to chat with customer support")
     public void verifyChatIsEnabled() {
-        Assert.assertTrue(pages.contactPage().isOnContactPage());
+        Assert.assertTrue(pages.blogPage().isOnBlogPage());
     }
 
 
-    @When("They navigate to About page")
-    public void navigateToAboutPage() {
-        logger.info("Click on About");
-        pages.homePage().clickOnAbout();
+    @When("They navigate to Trips page")
+    public void navigateToTripsPage() {
+        logger.info("Click on Trips");
+        pages.homePage().clickOnTrips();
     }
 
     @Then("They should see information about site")
     public void verifySiteInformation() {
-        Assert.assertTrue(pages.aboutPage().isOnAboutPage());
+        Assert.assertTrue(pages.tripsPage().isOnTripsPage());
     }
 
 
     @Then("They should be on the Home Page")
     public void theyShouldBeOnTheHomePage() {
-        Assert.assertTrue(pages.contactPage().isOnContactPage());
+        Assert.assertTrue(pages.blogPage().isOnBlogPage());
     }
 }
