@@ -13,7 +13,7 @@ public class Home {
     private final WebDriver webDriver;
 
     private final By blogLink = By.xpath("//a[contains(@href, 'blog')]");
-    private final By tripsLink = By.xpath("//a[contains(@href, 'trip')]");
+    private final By tripsLink = By.xpath("//nav[@id='site-navigation']//a[contains(text(), 'All Trips')]");
     private final By destinationsLink = By.xpath("//a[contains(@href, 'destinations')]");
     private final By activitiesLink = By.xpath("//a[contains(@href, 'activities')]");
     private final By tripTypesLink = By.xpath("//a[contains(@href, 'trip-types')]");

@@ -36,6 +36,7 @@ public class WebDriverHandler {
         chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--remote-allow-origins=*");
+        chromeOptions.addArguments("--start-maximized");
         chromeOptions.addArguments(capabilities);
         webDriver = new ChromeDriver(chromeOptions);
     }
