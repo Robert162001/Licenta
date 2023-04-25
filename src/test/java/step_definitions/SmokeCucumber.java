@@ -11,13 +11,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.testng.Assert;
 import testutils.BaseTestProvider;
 import webpages.Pages;
 
 import java.io.ByteArrayInputStream;
 
-public class StepCucumber {
+public class SmokeCucumber {
     private static final Logger logger = LogManager.getLogger(StepCucumber.class);
 
     private BaseTestProvider baseTestProvider;
@@ -38,37 +37,22 @@ public class StepCucumber {
         baseTestProvider.closeDriver();
     }
 
-    @Given("A user is on Home page")
-    public void navigateToHomePage() {
+    @Given("A user navigate to Home page")
+    public void navigateToHomePage(){
+        logger.info("Navigate to www.robert-b.ro");
         pages.homePage().navigateTo();
     }
 
-    @When("They navigate to Blog page")
-    public void navigateToBlogPage() {
-        logger.info("Click on Blog");
-        pages.homePage().clickOnBlog();
+    @When("The site successfully loads")
+    public void successfulLoadHomePage(){
+        logger.info("The user should see the site");
+        pages.homePage().isOnHomePage();
     }
 
-    @Then("They should be able to chat with customer support")
-    public void verifyChatIsEnabled() {
-        Assert.assertTrue(pages.blogPage().isOnBlogPage());
+    @Then("They should be able to see the title")
+    public void seeTitlePage(){
+        logger.info("The user should see the title of the site: Robert's Travel");
+        pages.homePage().seeTitlePage();
     }
 
-
-    @When("They navigate to Trips page")
-    public void navigateToTripsPage() {
-        logger.info("Click on Trips");
-        pages.homePage().clickOnTrips();
-    }
-
-    @Then("They should see information about site")
-    public void verifySiteInformation() {
-        Assert.assertTrue(pages.tripsPage().isOnTripsPage());
-    }
-
-
-    @Then("They should be on the Home Page")
-    public void theyShouldBeOnTheHomePage() {
-        Assert.assertTrue(pages.blogPage().isOnBlogPage());
-    }
 }

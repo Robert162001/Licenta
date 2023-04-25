@@ -5,22 +5,22 @@ import org.openqa.selenium.support.PageFactory;
 
 import static webpages.Home.HOME_PAGE_URL;
 
-public class Contact {
+public class Blog {
 
     private final WebDriver webDriver;
 
-    private static final String CONTACT_PAGE_URL = HOME_PAGE_URL + "contact/";
+    private static final String BLOG_PAGE_URL = HOME_PAGE_URL + "blog/";
 
-    public Contact(WebDriver webDriver) {
+    public Blog(WebDriver webDriver) {
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
     }
 
     public void navigateTo() {
-        webDriver.navigate().to(CONTACT_PAGE_URL);
+        webDriver.navigate().to(BLOG_PAGE_URL);
     }
 
-    public boolean isOnContactPage() {
-        return webDriver.getCurrentUrl().equals(CONTACT_PAGE_URL);
+    public boolean isOnBlogPage() {
+        return webDriver.getCurrentUrl().equals(BLOG_PAGE_URL);
     }
 }
