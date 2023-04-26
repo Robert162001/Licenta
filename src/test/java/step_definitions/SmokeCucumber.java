@@ -17,7 +17,7 @@ import webpages.Pages;
 import java.io.ByteArrayInputStream;
 
 public class SmokeCucumber {
-    private static final Logger logger = LogManager.getLogger(StepCucumber.class);
+    private static final Logger logger = LogManager.getLogger(SmokeCucumber.class);
 
     private BaseTestProvider baseTestProvider;
     private Pages pages;
