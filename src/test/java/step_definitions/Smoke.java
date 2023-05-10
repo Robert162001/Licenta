@@ -16,8 +16,8 @@ import webpages.Pages;
 
 import java.io.ByteArrayInputStream;
 
-public class SmokeCucumber {
-    private static final Logger logger = LogManager.getLogger(SmokeCucumber.class);
+public class Smoke {
+    private static final Logger logger = LogManager.getLogger(Smoke.class);
 
     private BaseTestProvider baseTestProvider;
     private Pages pages;
@@ -37,21 +37,21 @@ public class SmokeCucumber {
         baseTestProvider.closeDriver();
     }
 
-    @Given("A user navigate to Home page")
+    @Given("the user navigate to Home page")
     public void navigateToHomePage(){
         logger.info("Navigate to www.robert-b.ro");
         pages.homePage().navigateTo();
     }
 
-    @When("The site successfully loads")
+    @When("the site successfully loads")
     public void successfulLoadHomePage(){
-        logger.info("The user should see the site");
+        logger.info("The user connect to the site");
         pages.homePage().isOnHomePage();
     }
 
-    @Then("They should be able to see the title")
+    @Then("the user is able to see the title")
     public void seeTitlePage(){
-        logger.info("The user should see the title of the site: Robert's Travel");
+        logger.info("The user see the title of the site: Robert's Travel");
         pages.homePage().seeTitlePage();
     }
 
