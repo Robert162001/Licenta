@@ -39,12 +39,12 @@ public class Sanity {
     }
 
 
-    @Given("the user is on Home Page")
+    @Given("the user is on Home page")
     public void navigateToHomePage() {
         pages.homePage().navigateTo();
     }
 
-    @When("the user navigate to <page> page")
+    @When("the user navigate to {string} page")
     public void navigateToEachPage(String page) {
         logger.info("Click on " + page);
         switch (page) {
@@ -91,63 +91,9 @@ public class Sanity {
         }
     }
 
-
-//    @When("They navigate to Trips page")
-//    public void navigateToTripsPage() {
-//        logger.info("Click on Trips");
-//        pages.homePage().clickOnTrips();
-//    }
-//
-//    @Then("They should see information about trips")
-//    public void siteInformation() {
-//        Assert.assertTrue(pages.tripsPage().isOnTripsPage());
-//    }
-//
-//
-//
-//    @When("They navigate to Destinations page")
-//    public void navigateToDestinationsPage() {
-//        logger.info("Click on Destination");
-//        pages.homePage().clickOnDestinations();
-//    }
-//
-//    @Then("They should see information about destinations")
-//    public void informationAboutDestinations() {
-//        Assert.assertTrue(pages.destinationsPage().isOnDestinationsPage());
-//    }
-//
-//
-//
-//    @When("They navigate to TripTypes page")
-//    public void navigateToTripTypesPage() {
-//        logger.info("Click on TripTypes");
-//        pages.homePage().clickOnTripTypes();
-//    }
-//
-//    @Then("They should see information about triptypes")
-//    public void informationAboutTriptypes() {
-//        Assert.assertTrue(pages.tripTypesPage().isOnTripTypesPage());
-//    }
-//
-//
-//
-//    @When("They navigate to Activities page")
-//    public void navigateToActivitiesPage() {
-//        logger.info("Click on Activities");
-//        pages.homePage().clickOnActivities();
-//    }
-//
-//    @Then("They should see information about activities")
-//    public void informationAboutActivities() {
-//        Assert.assertTrue(pages.activitiesPage().isOnActivitiesPage());
-//    }
-
-
-
-
-//    @Then("They should be on the Home Page")
-//    public void verifyHomePage() {
-//        Assert.assertTrue(pages.blogPage().isOnBlogPage());
-//    }
+    @Then("the user is able to see Home page")
+    public void verifyHomePage() {
+        Assert.assertTrue(pages.blogPage().isOnBlogPage());
+    }
 
 }
