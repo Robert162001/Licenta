@@ -48,46 +48,24 @@ public class Sanity {
     public void navigateToEachPage(String page) {
         logger.info("Click on " + page);
         switch (page) {
-            case "Blog":
-                pages.homePage().clickOnBlog();
-                break;
-            case "Trips":
-                pages.homePage().clickOnTrips();
-                break;
-            case "Destinations":
-                pages.homePage().clickOnDestinations();
-                break;
-            case "TripTypes":
-                pages.homePage().clickOnTripTypes();
-                break;
-            case "Activities":
-                pages.homePage().clickOnActivities();
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid page: " + page);
+            case "Blog" -> pages.homePage().clickOnBlog();
+            case "Trips" -> pages.homePage().clickOnTrips();
+            case "Destinations" -> pages.homePage().clickOnDestinations();
+            case "TripTypes" -> pages.homePage().clickOnTripTypes();
+            case "Activities" -> pages.homePage().clickOnActivities();
+            default -> throw new IllegalArgumentException("Invalid page: " + page);
         }
     }
 
     @Then("the user is able to see {string}")
     public void verifyTheSpecificInformation(String information) {
         switch (information) {
-            case "reviews":
-                Assert.assertTrue(pages.blogPage().isOnBlogPage());
-                break;
-            case "trips":
-                Assert.assertTrue(pages.tripsPage().isOnTripsPage());
-                break;
-            case "destinations":
-                Assert.assertTrue(pages.destinationsPage().isOnDestinationsPage());
-                break;
-            case "triptypes":
-                Assert.assertTrue(pages.tripTypesPage().isOnTripTypesPage());
-                break;
-            case "activities":
-                Assert.assertTrue(pages.activitiesPage().isOnActivitiesPage());
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid information: " + information);
+            case "reviews" -> Assert.assertTrue(pages.blogPage().isOnBlogPage());
+            case "trips" -> Assert.assertTrue(pages.tripsPage().isOnTripsPage());
+            case "destinations" -> Assert.assertTrue(pages.destinationsPage().isOnDestinationsPage());
+            case "triptypes" -> Assert.assertTrue(pages.tripTypesPage().isOnTripTypesPage());
+            case "activities" -> Assert.assertTrue(pages.activitiesPage().isOnActivitiesPage());
+            default -> throw new IllegalArgumentException("Invalid information: " + information);
         }
     }
 
