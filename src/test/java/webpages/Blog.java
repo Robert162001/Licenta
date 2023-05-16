@@ -38,10 +38,14 @@ public class Blog {
         PageUtils.scrollPage(webDriver);
     }
 
-    public void commentOnPost(){
-        PageUtils.sendText(webDriver, commentArea, "Very good documentation!");
+    public void commentOnPost() {
+        PageUtils.sendText(webDriver, commentArea,  "Very good documentation! "+ System.currentTimeMillis());
         PageUtils.sendText(webDriver, nameArea, "Robert");
         PageUtils.sendText(webDriver, emailArea, "robert@email.com");
         webDriver.findElement(submitComment).click();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(System.currentTimeMillis());
     }
 }

@@ -3,7 +3,6 @@ package step_definitions;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.qameta.allure.Allure;
@@ -38,16 +37,11 @@ public class Sanity {
         baseTestProvider.closeDriver();
     }
 
-
-    @Given("the user is on Home page")
-    public void navigateToHomePage() {
-        pages.homePage().navigateTo();
-    }
-
-    @When("the user navigate to {string} page")
+    @When("the user navigates to {string} page")
     public void navigateToEachPage(String page) {
         logger.info("Click on " + page);
         switch (page) {
+            case "Home" -> pages.homePage().navigateTo();
             case "Blog" -> pages.homePage().clickOnBlog();
             case "Trips" -> pages.homePage().clickOnTrips();
             case "Destinations" -> pages.homePage().clickOnDestinations();
@@ -63,15 +57,10 @@ public class Sanity {
             case "reviews" -> Assert.assertTrue(pages.blogPage().isOnBlogPage());
             case "trips" -> Assert.assertTrue(pages.tripsPage().isOnTripsPage());
             case "destinations" -> Assert.assertTrue(pages.destinationsPage().isOnDestinationsPage());
-            case "triptypes" -> Assert.assertTrue(pages.tripTypesPage().isOnTripTypesPage());
+            case "trip types" -> Assert.assertTrue(pages.tripTypesPage().isOnTripTypesPage());
             case "activities" -> Assert.assertTrue(pages.activitiesPage().isOnActivitiesPage());
             default -> throw new IllegalArgumentException("Invalid information: " + information);
         }
-    }
-
-    @Then("the user is able to see Home page")
-    public void verifyHomePage() {
-        Assert.assertTrue(pages.blogPage().isOnBlogPage());
     }
 
 }

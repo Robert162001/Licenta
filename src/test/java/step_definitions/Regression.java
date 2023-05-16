@@ -38,20 +38,20 @@ public class Regression {
     }
 
 
-    @Given("the user navigate to Blog page")
-    public void theUserNavigateToBlogPage(){
+    @Given("the user navigates to Blog page")
+    public void theUserNavigateToBlogPage() {
         logger.info("Navigate to Blog page");
         pages.blogPage().navigateTo();
     }
 
     @When("the user select an interesting post and read it")
-    public void theUserSelectAnInterestingPostAndReadIt(){
+    public void theUserSelectAnInterestingPostAndReadIt() {
         logger.info("The user is able to see 3 post and choose what to read");
         pages.blogPage().selectPost();
     }
 
     @Then("the user send a comment to that post")
-    public void theUserSendACommentToThatPost(){
+    public void theUserSendACommentToThatPost() {
         logger.info("The user send his name and address and also send a comment");
         pages.blogPage().commentOnPost();
     }

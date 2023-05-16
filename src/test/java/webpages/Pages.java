@@ -3,7 +3,7 @@ package webpages;
 import org.openqa.selenium.WebDriver;
 
 public class Pages {
-    private WebDriver webDriver;
+    private final WebDriver webDriver;
     private Home home;
     private Blog blog;
     private Trips trips;
