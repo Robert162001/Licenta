@@ -1,4 +1,4 @@
-@SanityTest
+@SanityTests
 Feature: Verify that the user can connect to each page of the site
 
   Scenario Outline: As an existing user, I want to be able to connect to each page of the site

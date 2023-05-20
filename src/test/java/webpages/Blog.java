@@ -44,8 +44,4 @@ public class Blog {
         PageUtils.sendText(webDriver, emailArea, "robert@email.com");
         webDriver.findElement(submitComment).click();
     }
-
-    public static void main(String[] args) {
-        System.out.println(System.currentTimeMillis());
-    }
 }

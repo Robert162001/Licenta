@@ -2,13 +2,13 @@ package testutils;
 
 import com.codeborne.selenide.Browsers;
 import org.openqa.selenium.WebDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
-import static io.github.bonigarcia.wdm.WebDriverManager.*;
 
 public class WebDriverHandler {
     private WebDriver webDriver;
@@ -33,7 +33,7 @@ public class WebDriverHandler {
     }
 
     private void instantiateChrome(String... capabilities) {
-        chromedriver().setup();
+        WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--remote-allow-origins=*");
         chromeOptions.addArguments("--start-maximized");
@@ -42,14 +42,14 @@ public class WebDriverHandler {
     }
 
     private void instantiateFirefox(String... capabilities) {
-        firefoxdriver().setup();
+        WebDriverManager.firefoxdriver().setup();
         FirefoxOptions firefoxOptions = new FirefoxOptions();
         firefoxOptions.addArguments(capabilities);
         webDriver = new FirefoxDriver(firefoxOptions);
     }
 
     private void instantiateEdge() {
-        edgedriver().setup();
+        WebDriverManager.edgedriver().setup();
         webDriver = new EdgeDriver();
     }
 }

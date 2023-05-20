@@ -1,20 +1,29 @@
 package testutils;
 
+import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.WebDriver;
+import webpages.Pages;
 
+import static com.codeborne.selenide.Selenide.using;
 
 public class BaseTestProvider {
-    protected WebDriver webDriver;
+    private static WebDriver webDriver;
+    private static Pages pages;
 
     public void setupDriver() {
         webDriver = new WebDriverHandler().getWebDriver();
+        pages = new Pages(webDriver);
     }
 
-    public void closeDriver() {
-        webDriver.quit();
+    public static void closeDriver() {
+        using(webDriver, Selenide::closeWebDriver);
     }
 
-    public WebDriver getWebDriver() {
+    public static WebDriver getWebDriver() {
         return webDriver;
+    }
+
+    public static Pages getPages() {
+        return pages;
     }
 }

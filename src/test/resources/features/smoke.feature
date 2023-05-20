@@ -1,4 +1,4 @@
-@SmokeTest
+@SmokeTests
 Feature: Connection to the site
 
   Scenario: As an existing user, I want to connect to the site successfully

@@ -1,52 +1,27 @@
 package step_definitions;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.qameta.allure.Allure;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
-import testutils.BaseTestProvider;
-import webpages.Pages;
 
-import java.io.ByteArrayInputStream;
+import static testutils.BaseTestProvider.getPages;
 
 public class Sanity {
+
     private static final Logger logger = LogManager.getLogger(Sanity.class);
-
-    private BaseTestProvider baseTestProvider;
-    private Pages pages;
-
-    @Before
-    public void setup() {
-        baseTestProvider = new BaseTestProvider();
-        baseTestProvider.setupDriver();
-        pages = new Pages(baseTestProvider.getWebDriver());
-    }
-
-    @After
-    public void teardown(Scenario scenario) throws IllegalMonitorStateException {
-        if (scenario.isFailed()) {
-            Allure.addAttachment(scenario.getName(), new ByteArrayInputStream(((TakesScreenshot) baseTestProvider.getWebDriver()).getScreenshotAs(OutputType.BYTES)));
-        }
-        baseTestProvider.closeDriver();
-    }
 
     @When("the user navigates to {string} page")
     public void navigateToEachPage(String page) {
         logger.info("Click on " + page);
         switch (page) {
-            case "Home" -> pages.homePage().navigateTo();
-            case "Blog" -> pages.homePage().clickOnBlog();
-            case "Trips" -> pages.homePage().clickOnTrips();
-            case "Destinations" -> pages.homePage().clickOnDestinations();
-            case "TripTypes" -> pages.homePage().clickOnTripTypes();
-            case "Activities" -> pages.homePage().clickOnActivities();
+            case "Home" -> getPages().homePage().navigateTo();
+            case "Blog" -> getPages().homePage().clickOnBlog();
+            case "Trips" -> getPages().homePage().clickOnTrips();
+            case "Destinations" -> getPages().homePage().clickOnDestinations();
+            case "TripTypes" -> getPages().homePage().clickOnTripTypes();
+            case "Activities" -> getPages().homePage().clickOnActivities();
             default -> throw new IllegalArgumentException("Invalid page: " + page);
         }
     }
@@ -54,11 +29,11 @@ public class Sanity {
     @Then("the user is able to see {string}")
     public void verifyTheSpecificInformation(String information) {
         switch (information) {
-            case "reviews" -> Assert.assertTrue(pages.blogPage().isOnBlogPage());
-            case "trips" -> Assert.assertTrue(pages.tripsPage().isOnTripsPage());
-            case "destinations" -> Assert.assertTrue(pages.destinationsPage().isOnDestinationsPage());
-            case "trip types" -> Assert.assertTrue(pages.tripTypesPage().isOnTripTypesPage());
-            case "activities" -> Assert.assertTrue(pages.activitiesPage().isOnActivitiesPage());
+            case "reviews" -> Assert.assertTrue(getPages().blogPage().isOnBlogPage());
+            case "trips" -> Assert.assertTrue(getPages().tripsPage().isOnTripsPage());
+            case "destinations" -> Assert.assertTrue(getPages().destinationsPage().isOnDestinationsPage());
+            case "trip types" -> Assert.assertTrue(getPages().tripTypesPage().isOnTripTypesPage());
+            case "activities" -> Assert.assertTrue(getPages().activitiesPage().isOnActivitiesPage());
             default -> throw new IllegalArgumentException("Invalid information: " + information);
         }
     }

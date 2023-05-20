@@ -1,4 +1,4 @@
-#@RegressionTest
+#@RegressionTests
 #Feature: Verify that the user can send a review
 
 #  Scenario: As an existing user, I want to send a comment on a post
