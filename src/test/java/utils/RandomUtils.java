@@ -14,12 +14,4 @@ public class RandomUtils {
         return StringUtils.join(userName, "@email.com");
     }
 
-
-
-    public static void main(String[] args) {
-       final String userName=generateRandomString(5, 11);
-       final String userEmail=generateEmailAddressByUserName(userName);
-        System.out.println(userName);
-        System.out.println(userEmail);
-    }
 }

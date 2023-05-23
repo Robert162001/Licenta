@@ -1,18 +1,22 @@
 package utils;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class PageUtils {
-    public static void scrollPage(WebDriver webDriver) {
+    public static void scrollToElement(WebDriver webDriver, WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
-        js.executeScript("window.scrollBy(0, 1000)");
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
-    public static void sendText(WebDriver webDriver, By locator, String text) {
-        WebElement element = webDriver.findElement(locator);
-        element.sendKeys(text);
+    public static String getTimeStamp(){
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return now.format(formatter);
     }
+
 }
