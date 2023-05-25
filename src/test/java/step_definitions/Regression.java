@@ -37,7 +37,6 @@ public class Regression {
     public void theySeeTheCommentPublishedOnThePage() {
         logger.info("The user is able to see if his comment was posted on the page");
         Assert.assertTrue(getPages().blogPage().visibleComment());
-        //TODO negative test
     }
 
 }

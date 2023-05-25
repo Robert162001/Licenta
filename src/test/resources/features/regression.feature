@@ -7,8 +7,8 @@ Feature: Verify that the user can send a review
     And they scroll to read the "first" published article on the page
     And they click on "Read more" button
     And they leave a comment with the following details
-      | comment                  | name   | email            | save details  |
-      | Very good documentation! | random | random@email.com | check/uncheck |
+      | comment                  | name   | email            |
+      | Very good documentation! | random | random@email.com |
     Then they see the comment published on the page
 
 
