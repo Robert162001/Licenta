@@ -32,7 +32,7 @@ public class Home {
 
     public boolean isOnHomePage(){return webDriver.getCurrentUrl().equals(HOME_PAGE_URL);}
 
-    public void seeTitlePage(){webDriver.findElement(titlePage);}
+    public boolean seeTitlePage(){return webDriver.findElement(titlePage).isDisplayed();}
 
     public void clickOnBlog() {using(webDriver, () -> $(blogLink).click());}
 
