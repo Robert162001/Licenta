@@ -11,6 +11,13 @@ Feature: Verify that the user can send a review
       | Very good documentation! | random | random@email.com |
     Then they see the comment published on the page
 
+Feature: Verify that the user can book an offer destination
+
+  Scenario: As an existing user, I want to make a reservation for a vacation
+    Given the user navigates to "Home" page
+    When the user navigates to "Trips" page
+    And they click to see all the destination from criteria
+    #And they select from criteria menu a destination
 
 
 

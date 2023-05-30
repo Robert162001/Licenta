@@ -39,4 +39,8 @@ public class Regression {
         Assert.assertTrue(getPages().blogPage().visibleComment());
     }
 
+    @And("they click to see all the destination from criteria")
+    public void theyClickToSeeAllTheDestinationFromCriteria() {
+        getPages().tripsPage().selectDestination();
+    }
 }
