@@ -81,6 +81,4 @@ public class Blog {
         }
         return true;
     }
-
-
 }

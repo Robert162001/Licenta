@@ -1,12 +1,11 @@
 package webpages;
 
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import utils.PageUtils;
-
-import java.util.List;
 
 import static webpages.Home.HOME_PAGE_URL;
 
@@ -14,23 +13,7 @@ public class Trips {
 
     private final WebDriver webDriver;
 
-    private final By clickOnShowAll = By.xpath("//div//ul/li/button[1]");
-    private final By london = By.xpath("//span[contains(text(), 'London')]");
-    private final By weekendTrips = By.xpath("//span[contains(text(), 'Weekend Trips')]");
-    private final By viewDetails = By.xpath("//a[contains(text(), 'View Details')]");
-
-//    public enum Buttons {
-//        BUTTON1, BUTTON2, BUTTON3
-//    }
-
-//    public void selectWhichButton(Buttons buttons) {
-//        List<WebElement> showAllButtons = webDriver.findElements(clickOnShowAll);
-//        switch (buttons) {
-//            case BUTTON1 -> showAllButtons.get(0).click();
-//            case BUTTON2 -> showAllButtons.get(1).click();
-//            case BUTTON3 -> showAllButtons.get(2).click();
-//        }
-//    }
+    private final By tripFound = By.xpath("//div[@class='wte-category-outer-wrap']");
 
     private static final String TRIPS_PAGE_URL = HOME_PAGE_URL + "trip/";
 
@@ -47,17 +30,43 @@ public class Trips {
         return webDriver.getCurrentUrl().equals(TRIPS_PAGE_URL);
     }
 
-    public void selectDestination() {
-        List<WebElement> showAllButtons = webDriver.findElements(clickOnShowAll);
-        PageUtils.scrollToElement(webDriver, showAllButtons.get(0));
-        showAllButtons.get(0).click();
+    public void expandCriteriaMenu(String section) {
+        WebElement showAll = webDriver.findElement(findShowAllButtonForSection(section));
+        PageUtils.scrollToElement(webDriver, showAll);
+        showAll.click();
     }
 
-//        webDriver.findElement(london).click();
-//        PageUtils.scrollToElement(webDriver, showAllButtons.get(2));
-//        showAllButtons.get(2).click();
-//        webDriver.findElement(weekendTrips).click();
+    private By findShowAllButtonForSection(String section) {
+        return By.xpath(
+                StringUtils.join(
+                        "//h3[contains(text(),",
+                        "'",
+                        section,
+                        "')]/following-sibling::div//button[@class='show-more']"));
     }
+
+    private By destinationCheckBoxes(String destinationCheckBox) {
+        return By.xpath(StringUtils.join("//input[@name='destination' and @value='", destinationCheckBox.toLowerCase(), "']/following-sibling::span"));
+    }
+
+    public void selectDestination(String destination) {
+        webDriver.findElement(destinationCheckBoxes(destination)).click();
+    }
+
+    public By tripTypeCheckBoxes(String tripTypeCheckBox) {
+        return By.xpath(StringUtils.join("//input[@name='trip_types' and @value='", tripTypeCheckBox.toLowerCase(), "']/following-sibling::span"));
+    }
+
+    public void selectTripType(String tripType) {
+        webDriver.findElement(tripTypeCheckBoxes(tripType)).click();
+    }
+
+    public boolean visibleTrip() {
+        WebElement element = webDriver.findElement(tripFound);
+        PageUtils.scrollToElement(webDriver, element);
+        return element.isDisplayed();
+    }
+}
 
 
 
