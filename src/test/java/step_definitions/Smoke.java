@@ -8,7 +8,7 @@ import org.testng.Assert;
 
 import static testutils.BaseTestProvider.getPages;
 
-public class Smoke{
+public class Smoke {
 
     private static final Logger logger = LogManager.getLogger(Smoke.class);
 
@@ -23,6 +23,5 @@ public class Smoke{
         logger.info("The user see the title of the site: Robert's Travel");
         Assert.assertTrue(getPages().homePage().seeTitlePage());
     }
-
 
 }

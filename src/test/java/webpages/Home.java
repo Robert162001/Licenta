@@ -43,4 +43,5 @@ public class Home {
     public void clickOnActivities() {using(webDriver, () -> $(activitiesLink).click());}
 
     public void clickOnTripTypes() {using(webDriver, () -> $(tripTypesLink).click());}
+
 }

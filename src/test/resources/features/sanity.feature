@@ -11,7 +11,7 @@ Feature: Verify that the user can connect to each page of the site
       | Blog         | reviews                            |
       | Trips        | trips                              |
       | Destinations | destinations                       |
-      | TripTypes    | trip types                          |
+      | TripTypes    | trip types                         |
       | Activities   | activities                         |
 
 
