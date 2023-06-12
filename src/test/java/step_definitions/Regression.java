@@ -16,13 +16,13 @@ public class Regression {
     private static final Logger logger = LogManager.getLogger(Regression.class);
 
     @And("they scroll to read the {string} published article on the page")
-    public void scrollToReadThePublishedArticleOnThePage() {
+    public void scrollToReadThePublishedArticleOnThePage(String arg0) {
         logger.info("The user is able to see 3 post and choose what to read");
         getPages().blogPage().selectPost();
     }
 
     @And("they click on {string} button")
-    public void clickOnButton() {
+    public void clickOnButton(String arg0) {
         logger.info("The user click on Read More");
         getPages().blogPage().clickOnReadMoreButton();
     }
