@@ -16,8 +16,12 @@ public class Destinations {
         PageFactory.initElements(webDriver, this);
     }
 
-    public void navigateTo() {webDriver.navigate().to(DESTINATIONS_PAGE_URL);}
+    public void navigateTo() {
+        webDriver.navigate().to(DESTINATIONS_PAGE_URL);
+    }
 
-    public boolean isOnDestinationsPage(){return webDriver.getCurrentUrl().equals(DESTINATIONS_PAGE_URL);}
+    public boolean isOnDestinationsPage() {
+        return webDriver.getCurrentUrl().equals(DESTINATIONS_PAGE_URL);
+    }
 
 }

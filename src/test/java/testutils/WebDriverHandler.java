@@ -1,11 +1,10 @@
 package testutils;
 
 import com.codeborne.selenide.Browsers;
-import org.openqa.selenium.WebDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
@@ -20,8 +19,6 @@ public class WebDriverHandler {
     public WebDriverHandler(String... capabilities) {
         String browser = System.getProperty("browser", "chrome");
         switch (browser) {
-            case Browsers.EDGE -> instantiateEdge();
-
             case Browsers.FIREFOX -> instantiateFirefox(capabilities);
 
             case Browsers.CHROME -> instantiateChrome(capabilities);
@@ -46,10 +43,7 @@ public class WebDriverHandler {
         FirefoxOptions firefoxOptions = new FirefoxOptions();
         firefoxOptions.addArguments(capabilities);
         webDriver = new FirefoxDriver(firefoxOptions);
+        webDriver.manage().window().maximize();
     }
 
-    private void instantiateEdge() {
-        WebDriverManager.edgedriver().setup();
-        webDriver = new EdgeDriver();
-    }
 }

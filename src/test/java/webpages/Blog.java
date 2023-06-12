@@ -54,31 +54,32 @@ public class Blog {
         String userName = RandomUtils.generateRandomString(5, 11);
         String userEmail = RandomUtils.generateEmailAddressByUserName(userName);
 
-        if (verifyMapKeyExists(params, COMMENT)) {
+        if (isMapKeyExists(params, COMMENT)) {
             webDriver.findElement(commentArea).sendKeys(params.get(COMMENT) + PageUtils.getTimeStamp());
         }
 
-        if (verifyMapKeyExists(params, NAME)) {
+        if (isMapKeyExists(params, NAME)) {
             webDriver.findElement(nameArea).sendKeys(params.get(NAME).equalsIgnoreCase(RANDOM) ? userName : params.get(NAME));
         }
 
-        if (verifyMapKeyExists(params, EMAIL)) {
+        if (isMapKeyExists(params, EMAIL)) {
             webDriver.findElement(emailArea).sendKeys(params.get(EMAIL).contains(RANDOM) ? userEmail : params.get(EMAIL));
         }
 
         element.click();
     }
 
-    public boolean visibleComment() {
+    public boolean isVisibleComment() {
         List<WebElement> commentElement = webDriver.findElements(comments);
         WebElement lastComment = commentElement.get(commentElement.size() - 1);
         return lastComment.isDisplayed();
     }
 
-    private boolean verifyMapKeyExists(Map<String, String> paramsMap, String mapKey) {
+    private boolean isMapKeyExists(Map<String, String> paramsMap, String mapKey) {
         if (!paramsMap.containsKey(mapKey)) {
             throw new IllegalArgumentException(mapKey + " does not exist");
         }
         return true;
     }
+
 }

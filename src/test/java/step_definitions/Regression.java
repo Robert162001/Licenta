@@ -16,19 +16,19 @@ public class Regression {
     private static final Logger logger = LogManager.getLogger(Regression.class);
 
     @And("they scroll to read the {string} published article on the page")
-    public void scrollToReadThePublishedArticleOnThePage(String arg0) {
+    public void scrollToReadThePublishedArticleOnThePage() {
         logger.info("The user is able to see 3 post and choose what to read");
         getPages().blogPage().selectPost();
     }
 
     @And("they click on {string} button")
-    public void clickOnButton(String arg0) {
+    public void clickOnButton() {
         logger.info("The user click on Read More");
         getPages().blogPage().clickOnReadMoreButton();
     }
 
     @And("they leave a comment with the following details")
-    public void leaveACommentWithTheFollowingDetails(List<Map<String, String>>params) {
+    public void leaveACommentWithTheFollowingDetails(List<Map<String, String>> params) {
         logger.info("The user send his information to specific boxes");
         getPages().blogPage().commentOnPost(params.get(0));
     }
@@ -36,11 +36,11 @@ public class Regression {
     @Then("they see the comment published on the page")
     public void seeTheCommentPublishedOnThePage() {
         logger.info("The user is able to see if his comment was posted on the page");
-        Assert.assertTrue(getPages().blogPage().visibleComment());
+        Assert.assertTrue(getPages().blogPage().isVisibleComment());
     }
 
     @And("they select {string} as destination")
-    public void selectADestinationFromCriteriaMenu(String destination){
+    public void selectADestinationFromCriteriaMenu(String destination) {
         logger.info("The user select one of the destinations");
         getPages().tripsPage().selectDestination(destination);
     }
@@ -57,9 +57,10 @@ public class Regression {
         getPages().tripsPage().selectTripType(tripTypes);
     }
 
-    @Then("the user can choose the trip that suits his needs")
+    @Then("the user can see at least one trip displayed according to their searching criteria")
     public void chooseTheTripThatSuitsHisNeeds() {
         logger.info("The user is able to see the perfect trip for his needs");
-        Assert.assertTrue(getPages().tripsPage().visibleTrip());
+        Assert.assertTrue(getPages().tripsPage().isVisibleTrip());
     }
+
 }

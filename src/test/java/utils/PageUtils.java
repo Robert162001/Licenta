@@ -13,7 +13,7 @@ public class PageUtils {
         js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
-    public static String getTimeStamp(){
+    public static String getTimeStamp() {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return now.format(formatter);

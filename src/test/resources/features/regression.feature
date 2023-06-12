@@ -18,7 +18,7 @@ Feature: Verify that the user can execute a variety of flows
     And they select "London" as destination
     And they click on show all trips from "Trip Types" section
     And they select "Weekend-Trips" from menu
-    Then the user can choose the trip that suits his needs
+    Then the user can see at least one trip displayed according to their searching criteria
 
 
 

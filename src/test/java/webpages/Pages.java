@@ -31,5 +31,4 @@ public class Pages {
 
     public Activities activitiesPage() { return activities == null ? new Activities(webDriver) : this.activities;}
 
-
 }

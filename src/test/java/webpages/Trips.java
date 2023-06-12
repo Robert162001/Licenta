@@ -61,11 +61,12 @@ public class Trips {
         webDriver.findElement(tripTypeCheckBoxes(tripType)).click();
     }
 
-    public boolean visibleTrip() {
+    public boolean isVisibleTrip() {
         WebElement element = webDriver.findElement(tripFound);
         PageUtils.scrollToElement(webDriver, element);
         return element.isDisplayed();
     }
+
 }
 
 
